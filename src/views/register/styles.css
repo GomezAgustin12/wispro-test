@@ -1,0 +1,51 @@
+h2 {
+  border: 1px solid black;
+  border-radius: 1px;
+  margin: 2px;
+}
+.register-page-container {
+  /* height: calc(100vh - 40px); */
+  height: auto;
+  padding: 30px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.register-form-container {
+  display: flex;
+  justify-content: center;
+  width: 50%;
+  /* border: 1px solid lightgray; */
+}
+
+.register-logo {
+  display: grid;
+  place-items: center;
+  margin: 20px;
+  /* position: relative; */
+  /* left: 100px; */
+  justify-self: flex-end;
+}
+
+.register-social {
+  margin: 10px 10px 50px 10px;
+}
+
+@media screen and (max-width: 425px) {
+  .register-form {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .register-form {
+    width: 70%;
+  }
+}
+
+.ant-card-body {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
