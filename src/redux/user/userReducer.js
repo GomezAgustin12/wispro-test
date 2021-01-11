@@ -27,9 +27,10 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        user: action.payload,
+        user: action.payload || initialState.user,
       };
     case UPDATE_USER_DATA_ERROR:
+      console.error("ERROR", action.payload);
       return {
         ...state,
         loading: false,

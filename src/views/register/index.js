@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-import { Form, Input, Button, Card, Layout } from "antd";
+import { Form, Input, Button, Card, Layout, notification } from "antd";
 import logo from "assets/logo.png";
-import { useSelector } from "react-redux";
-// import { postStudent, postUser } from "../../api";
+import { useDispatch, useSelector } from "react-redux";
 import { Loader } from "components";
-import Axios from "axios";
 import "./styles.css";
+import { postUserRedux } from "redux/user/userActions";
 
 const { Content } = Layout;
 
@@ -18,30 +17,19 @@ const tailLayout = {
 };
 
 const Register = () => {
-  const [foto, setFoto] = useState();
   const [form] = Form.useForm();
-  console.log("Entre");
+  const { loading } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
 
   const onFinish = async (values) => {
-    // try {
-    //   const { user } = await postUser({
-    //     nombre: values.name,
-    //     apellido: values.lastName,
-    //     username: values.username,
-    //     email: values.email,
-    //     password: values.password,
-    //     Provincia: values.Provincia,
-    //     fotoPerfil: null,
-    //     AppRole: "student",
-    //   });
-    //   form.resetFields();
-    //   notification.success({ message: "Usuario registrado" });
-    // } catch (error) {
-    //   console.log(error.message);
-    // }
+    try {
+      dispatch(postUserRedux(values));
+      form.resetFields();
+      notification.success({ message: "Usuario registrado" });
+    } catch (error) {
+      console.log(error.message);
+    }
   };
-
-  const { loading } = useSelector((state) => state.user);
 
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
@@ -71,7 +59,7 @@ const Register = () => {
           </Form.Item>
           <Form.Item
             label="Apellido"
-            name="lastName"
+            name="lastname"
             rules={[{ required: true, message: "Ingrese apellido" }]}
           >
             <Input />

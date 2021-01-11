@@ -1,0 +1,25 @@
+.site-layout {
+  min-height: 100vh;
+  min-width: 100vw;
+}
+
+.site-layout .header {
+  background: #fff;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo h1 {
+  margin-left: 20px;
+}
+
+.logout {
+  margin: auto 10px;
+}

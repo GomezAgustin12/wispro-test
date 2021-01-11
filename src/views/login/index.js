@@ -1,16 +1,11 @@
 import React from "react";
-import { Form, Input, Button, Card, Layout } from "antd";
-// import { useSelector, useDispatch } from "react-redux";
-import "./styles.css";
+import { Form, Input, Button, Card, Layout, notification } from "antd";
+import { useDispatch, useSelector } from "react-redux";
 import logo from "assets/logo.png";
 import { Link } from "react-router-dom";
-// import {
-//   fetchUsersRequest,
-//   fetchUsersSuccess,
-//   fetchUsersFailure,
-// } from "../../redux";
-// import { login } from "../../api";
 import { Loader } from "components";
+import { loginRedux } from "redux/user/userActions";
+import "./styles.css";
 
 const { Content } = Layout;
 
@@ -23,21 +18,19 @@ const tailLayout = {
 };
 
 const Login = () => {
+  const dispatch = useDispatch();
+  const { loading } = useSelector((state) => state.user);
+
   const onFinish = async (values) => {
-    // try {
-    //   dispatch(fetchUsersRequest());
-    //   const res = await login(values);
-    //   dispatch(fetchUsersSuccess(res));
-    // } catch (error) {
-    //   dispatch(fetchUsersFailure());
-    // }
+    try {
+      dispatch(loginRedux(values));
+    } catch (error) {
+      console.log(error);
+    }
   };
 
-  // const dispatch = useDispatch();
-  // const { loading } = useSelector((state) => state.user);
-  const loading = false;
-
   const onFinishFailed = (errorInfo) => {
+    notification.error({ message: "Usuario o contraseña incorrecta" });
     console.log("Failed:", errorInfo);
   };
 
