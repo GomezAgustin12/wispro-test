@@ -1,6 +1,6 @@
 import { notification } from "antd";
 import axios from "axios";
-const url = "https://wispro.herokuapp.com/";
+const url = "https://wispro.herokuapp.com";
 
 export const login = async (data) => {
   try {

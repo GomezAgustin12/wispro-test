@@ -4,7 +4,7 @@ import { Chart, Loader, Table } from "components";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUsersRedux } from "redux/user/userActions";
 
-const ENDPOINT = "http://127.0.0.1:4001";
+const ENDPOINT = "https://wispro-socket.herokuapp.com";
 
 const Home = () => {
   const [response, setResponse] = useState([]);
