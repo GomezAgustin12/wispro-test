@@ -19,8 +19,8 @@ const Home = () => {
     const socket = socketIOClient(ENDPOINT);
     socket.on("FromAPI", (data) => {
       setResponse(data);
-      return socket.disconnect();
     });
+    return () => socket.disconnect();
   }, []);
 
   useEffect(() => {
